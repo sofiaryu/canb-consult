@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CANB English 중등 1:1 간담회 예약</title>
+<style>
+:root{--plum:#8E2B6B;--plum-d:#6B1D51;--plum-l:#F6E9F1;--bg:#FBF6F9;--card:#fff;--tx:#2A1424;--mut:#7C6573;--line:#E7D3DF;--ok:#fff;--shut:#EBE3E8;--shut-t:#9A8A94;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--plum:#C86AA5;--plum-d:#E7A6CC;--plum-l:#3A1B30;--bg:#1C1018;--card:#2A1824;--tx:#F5E8F0;--mut:#B79FAE;--line:#4A2E40;--ok:#2A1824;--shut:#352530;--shut-t:#8F7A87}}
+:root[data-theme="dark"]{--plum:#C86AA5;--plum-d:#E7A6CC;--plum-l:#3A1B30;--bg:#1C1018;--card:#2A1824;--tx:#F5E8F0;--mut:#B79FAE;--line:#4A2E40;--ok:#2A1824;--shut:#352530;--shut-t:#8F7A87}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 40px}
+header{background:linear-gradient(135deg,#7A2260,#A3367F);border-radius:20px;padding:22px 20px;color:#fff;text-align:center}
+header .lg{background:#fff;border-radius:14px;padding:10px 18px;display:inline-block}header img{height:52px;display:block}
+header h1{font-size:21px;margin:14px 0 4px}header p{margin:0;font-size:14px;opacity:.92}
+.banner{margin:14px 0 0;padding:10px 14px;border-radius:12px;background:var(--plum-l);color:var(--plum-d);font-size:13px;display:none}
+h2{font-size:15px;margin:24px 0 10px;color:var(--plum-d)}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.day{border:1.5px solid var(--line);background:var(--card);color:var(--tx);border-radius:14px;padding:10px 0;font:inherit;cursor:pointer;text-align:center}
+.day b{display:block;font-size:16px}.day span{font-size:12px;color:var(--mut)}
+.day.on{background:var(--plum);border-color:var(--plum);color:#fff}.day.on span{color:#fff;opacity:.85}
+.slots{display:grid;gap:10px}
+.slot{display:flex;justify-content:space-between;align-items:center;border:1.5px solid var(--plum);background:var(--ok);color:var(--tx);border-radius:14px;padding:15px 16px;font:inherit;font-size:16px;cursor:pointer}
+.slot em{font-style:normal;font-size:13px;color:var(--plum);font-weight:700}
+.slot.shut{background:var(--shut);border-color:var(--shut);color:var(--shut-t)}.slot.shut em{color:var(--shut-t)}
+.extra{width:100%;margin-top:14px;border:1.5px dashed var(--plum);background:transparent;color:var(--plum-d);border-radius:14px;padding:14px;font:inherit;font-weight:700;cursor:pointer}
+footer{text-align:center;margin-top:34px}footer a{color:var(--mut);font-size:13px;cursor:pointer;text-decoration:underline}
+.ov{position:fixed;inset:0;background:rgba(30,10,24,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.ov.on{display:flex}.md{background:var(--card);border-radius:18px;padding:22px 20px;width:100%;max-width:420px;max-height:90vh;overflow:auto}
+.md h3{margin:0 0 4px;font-size:18px;color:var(--plum-d)}.md .sub{margin:0 0 14px;color:var(--mut);font-size:14px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;background:var(--bg);color:var(--tx)}
+input:focus,textarea:focus{outline:none;border-color:var(--plum)}
+.hint{font-size:12px;color:var(--mut);margin-top:4px}.err{color:#C0264B;font-size:13px;margin-top:10px;min-height:18px}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;border:0;border-radius:12px;padding:13px;font:inherit;font-weight:700;cursor:pointer;background:var(--plum);color:#fff}
+.btn.g{background:var(--plum-l);color:var(--plum-d)}.btn.d{background:#C0264B}.btn:disabled{opacity:.5}
+.row{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:14px}
+.row small{color:var(--mut);display:block}.row button{border:0;background:var(--plum-l);color:var(--plum-d);border-radius:8px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer}
+.tag{display:inline-block;background:var(--plum);color:#fff;border-radius:6px;font-size:11px;padding:1px 6px;margin-right:4px}
+</style></head><body><div class="wrap">
+<header><div class="lg"><img src="logo.png" alt="CANB English"></div><h1>중등 1:1 간담회 예약</h1><p>11월 16일(월) ~ 20일(금) · 오후 3:00 ~ 5:00</p></header>
+<div class="banner" id="banner"></div>
+<div id="main">
+<h2>① 날짜 선택</h2><div class="days" id="days"></div>
+<h2>② 시간 선택</h2><div class="slots" id="slots"></div>
+<button class="extra" id="extraBtn">시간 외 상담 예약 희망</button>
+</div>
+<div id="admin" style="display:none"><h2>관리자 · 예약 현황</h2><div id="adminList"></div><div class="btns"><button class="btn g" id="adminOut">나가기</button></div></div>
+<footer><p class="hint">수집 항목: 학생 이름, 보호자 연락처 · 목적: 간담회 일정 안내 · 간담회 종료 후 파기</p><a id="adminLink">관리자</a></footer>
+</div>
+<div class="ov" id="ov"><div class="md" id="md"></div></div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getDatabase,ref,onValue,update,push,set,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const app=initializeApp({apiKey:"AIzaSyBQ1JjOTW5upGU20nE4tdQ_FRzFNDb2xWQ",authDomain:"magokcanb7-2ff2f.firebaseapp.com",databaseURL:"https://magokcanb7-2ff2f-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"magokcanb7-2ff2f",storageBucket:"magokcanb7-2ff2f.firebasestorage.app",messagingSenderId:"185091697537",appId:"1:185091697537:web:aa8548c901d74acb261680"});
+const db=getDatabase(app),auth=getAuth(app);
+const DAYS=[["2026-11-16","11/16","월"],["2026-11-17","11/17","화"],["2026-11-18","11/18","수"],["2026-11-19","11/19","목"],["2026-11-20","11/20","금"]];
+const TIMES=["3:00-3:20","3:25-3:45","3:50-4:10","4:15-4:35","4:40-5:00"];
+let sel=0,slots={},bks=[],exs=[],isAdmin=false,unsubs=[];
+const $=i=>document.getElementById(i);
+const esc=s=>{const d=document.createElement("div");d.textContent=s;return d.innerHTML};
+const key=(d,t)=>DAYS[d][0].replace(/-/g,"")+"_"+t;
+const label=(d,t)=>DAYS[d][1]+"("+DAYS[d][2]+") "+TIMES[t];
+async function hash(pw,k){const b=new TextEncoder().encode("canb|"+k+"|"+pw);const h=await crypto.subtle.digest("SHA-256",b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,"0")).join("")}
+const banner=t=>{const b=$("banner");b.textContent=t;b.style.display=t?"block":"none"};
+function renderDays(){$("days").innerHTML=DAYS.map((d,i)=>'<button class="day'+(i==sel?' on':'')+'" data-i="'+i+'"><b>'+d[1]+'</b><span>'+d[2]+'요일</span></button>').join("");
+ $("days").querySelectorAll(".day").forEach(b=>b.onclick=()=>{sel=+b.dataset.i;renderDays();renderSlots()})}
+function renderSlots(){$("slots").innerHTML=TIMES.map((t,i)=>{const shut=!!slots[key(sel,i)];return '<button class="slot'+(shut?' shut':'')+'" data-i="'+i+'"><span>오후 '+t+'</span><em>'+(shut?'마감':'예약 가능')+'</em></button>'}).join("");
+ $("slots").querySelectorAll(".slot").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;slots[key(sel,i)]?manageModal(sel,i):bookModal(sel,i)})}
+const open_=h=>{$("md").innerHTML=h;$("ov").classList.add("on")};
+const close_=()=>$("ov").classList.remove("on");
+$("ov").onclick=e=>{if(e.target===$("ov"))close_()};
+const saved=()=>{try{return JSON.parse(localStorage.getItem("canb_me")||"{}")}catch(e){return{}}};
+const remember=(n,p)=>{try{localStorage.setItem("canb_me",JSON.stringify({n,p}))}catch(e){}};
+function done(h,b){open_('<h3>'+h+'</h3><p class="sub" style="margin-top:10px">'+b+'</p><div class="btns"><button class="btn" id="c">확인</button></div>');$("c").onclick=close_}
+function bookModal(d,t){const s=saved();
+ open_('<h3>간담회 예약</h3><p class="sub">'+label(d,t)+'</p><label>학생 이름</label><input id="f_n" maxlength="30" value="'+esc(s.n||"")+'" autocomplete="off"><label>부모님 핸드폰 번호</label><input id="f_p" type="tel" inputmode="numeric" maxlength="20" placeholder="010-0000-0000" value="'+esc(s.p||"")+'"><label>예약 비밀번호</label><input id="f_w" type="password" placeholder="4자리 이상"><div class="hint">예약 취소·시간 변경 때 필요합니다. 꼭 기억해 주세요.</div><div class="err" id="err"></div><div class="btns"><button class="btn g" id="c">닫기</button><button class="btn" id="ok">예약하기</button></div>');
+ $("c").onclick=close_;
+ $("ok").onclick=async()=>{const n=$("f_n").value.trim(),p=$("f_p").value.trim(),w=$("f_w").value;
+  if(!n)return $("err").textContent="학생 이름을 입력해 주세요.";
+  if(p.replace(/\D/g,"").length<10)return $("err").textContent="핸드폰 번호를 정확히 입력해 주세요.";
+  if(w.length<4)return $("err").textContent="비밀번호는 4자리 이상 입력해 주세요.";
+  $("ok").disabled=true;const k=key(d,t);
+  try{const u={};
+   u["slots/"+k]=true;u["secrets/"+k]=await hash(w,k);
+   u["bookings/"+k]={name:n,phone:p,day:d,time:t,at:serverTimestamp()};
+   await update(ref(db),u);remember(n,p);
+   done("예약이 완료되었습니다","<b>"+label(d,t)+"</b><br>취소·변경은 해당 시간의 '마감' 버튼에서 비밀번호로 가능합니다.")
+  }catch(e){$("err").textContent=/permission/i.test(e.code+e.message)?"방금 다른 분이 예약했습니다. 다른 시간을 선택해 주세요.":"예약에 실패했습니다. 잠시 후 다시 시도해 주세요.";$("ok").disabled=false}}}
+function manageModal(d,t){
+ open_('<h3>마감된 시간</h3><p class="sub">'+label(d,t)+'<br>본인 예약이면 비밀번호를 입력해 취소하거나 시간을 바꿀 수 있어요.</p><label>예약 비밀번호</label><input id="f_w" type="password"><div class="err" id="err"></div><div class="btns"><button class="btn g" id="c">닫기</button><button class="btn d" id="cx">예약 취소</button></div><div class="btns"><button class="btn" id="ch">시간 변경하기</button></div>');
+ $("c").onclick=close_;
+ async function go(change){const w=$("f_w").value,k=key(d,t);if(!w)return $("err").textContent="비밀번호를 입력해 주세요.";
+  try{const u={};
+   u["cancels/"+k]={proof:await hash(w,k),at:serverTimestamp()};
+   u["slots/"+k]=null;u["secrets/"+k]=null;u["bookings/"+k]=null;
+   await update(ref(db),u);
+   change?done("예약이 취소되었습니다","원하시는 새 시간을 선택해 다시 예약해 주세요."):done("예약이 취소되었습니다","언제든 다시 예약하실 수 있어요.")
+  }catch(e){$("err").textContent=/permission/i.test(e.code+e.message)?"비밀번호가 일치하지 않습니다.":"처리에 실패했습니다. 다시 시도해 주세요."}}
+ $("cx").onclick=()=>go(false);$("ch").onclick=()=>go(true)}
+$("extraBtn").onclick=()=>{const s=saved();
+ open_('<h3>시간 외 상담 예약 희망</h3><p class="sub">'+DAYS[sel][1]+'('+DAYS[sel][2]+') · 정해진 시간에 어려운 경우 희망 시간을 남겨 주세요. 확인 후 연락드립니다.</p><label>학생 이름</label><input id="f_n" maxlength="30" value="'+esc(s.n||"")+'"><label>부모님 핸드폰 번호</label><input id="f_p" type="tel" inputmode="numeric" maxlength="20" placeholder="010-0000-0000" value="'+esc(s.p||"")+'"><label>간담회 예약 희망 시간</label><textarea id="f_t" rows="3" maxlength="300" placeholder="예) 오후 5:30 이후, 전화 상담 가능 등"></textarea><div class="err" id="err"></div><div class="btns"><button class="btn g" id="c">닫기</button><button class="btn" id="ok">신청하기</button></div>');
+ $("c").onclick=close_;
+ $("ok").onclick=async()=>{const n=$("f_n").value.trim(),p=$("f_p").value.trim(),w=$("f_t").value.trim();
+  if(!n||p.replace(/\D/g,"").length<10||!w)return $("err").textContent="이름, 핸드폰 번호, 희망 시간을 모두 입력해 주세요.";
+  $("ok").disabled=true;
+  try{await set(push(ref(db,"extras")),{name:n,phone:p,day:sel,wish:w,at:serverTimestamp()});remember(n,p);
+   done("시간 외 예약 희망이 접수되었습니다","담당 선생님이 확인 후 연락드립니다.")
+  }catch(e){$("err").textContent="접수에 실패했습니다. 다시 시도해 주세요.";$("ok").disabled=false}}};
+const arr=s=>{const o=s.val()||{};return Object.keys(o).map(i=>({id:i,...o[i]}))};
+const ts=o=>o.at||0;
+function renderAdmin(){const l=$("adminList");
+ const a=bks.map(b=>({...b,x:0})).concat(exs.map(b=>({...b,x:1}))).sort((p,q)=>p.day-q.day||p.x-q.x||(p.time||0)-(q.time||0)||ts(p)-ts(q));
+ if(!a.length){l.innerHTML='<p class="sub">아직 예약이 없습니다.</p>';return}
+ l.innerHTML=a.map(b=>'<div class="row"><div>'+(b.x?'<span class="tag">시간 외</span>'+DAYS[b.day][1]+'('+DAYS[b.day][2]+')':label(b.day,b.time))+'<small>'+esc(b.name)+' · '+esc(b.phone)+(b.wish?'<br>희망: '+esc(b.wish):'')+'</small></div><button data-id="'+b.id+'" data-x="'+b.x+'">삭제</button></div>').join("");
+ l.querySelectorAll("button").forEach(b=>b.onclick=async()=>{if(!confirm("이 예약을 삭제할까요?"))return;const id=b.dataset.id;try{const u={};
+  if(b.dataset.x=="1")u["extras/"+id]=null;else{u["slots/"+id]=null;u["secrets/"+id]=null;u["bookings/"+id]=null}
+  await update(ref(db),u)}catch(e){alert("삭제에 실패했습니다.")}})}
+$("adminLink").onclick=()=>{
+ if(isAdmin){showAdmin(true);return}
+ open_('<h3>관리자 로그인</h3><label>이메일</label><input id="f_e" type="email"><label>비밀번호</label><input id="f_w" type="password"><div class="err" id="err"></div><div class="btns"><button class="btn g" id="c">닫기</button><button class="btn" id="ok">로그인</button></div>');
+ $("c").onclick=close_;$("ok").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("f_e").value.trim(),$("f_w").value);close_();showAdmin(true)}catch(e){$("err").textContent="이메일 또는 비밀번호가 올바르지 않습니다."}}};
+function showAdmin(on){$("main").style.display=on?"none":"block";$("admin").style.display=on?"block":"none"}
+$("adminOut").onclick=async()=>{showAdmin(false);await signOut(auth)};
+onAuthStateChanged(auth,u=>{unsubs.forEach(f=>f());unsubs=[];isAdmin=!!u;bks=[];exs=[];
+ if(!u){showAdmin(false);return}
+ unsubs.push(onValue(ref(db,"bookings"),s=>{bks=arr(s);renderAdmin()},()=>{}));
+ unsubs.push(onValue(ref(db,"extras"),s=>{exs=arr(s);renderAdmin()},()=>{}))});
+renderDays();renderSlots();
+onValue(ref(db,"slots"),s=>{slots=s.val()||{};banner("");renderSlots()},()=>banner("예약 현황을 불러오지 못했습니다. 잠시 후 새로고침해 주세요."));
+</script></body></html>

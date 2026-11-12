@@ -1,0 +1,82 @@
+{
+  "rules": {
+    "slots": {
+      ".read": true,
+      "$k": {
+        ".write": "auth != null && auth.token.email === 'ADMIN_EMAIL' || ($k.matches(/^202611(1[6-9]|20)_[0-4]$/) && ((!data.exists() && newData.parent().parent().child('secrets').child($k).exists()) || (data.exists() && !newData.exists() && newData.parent().parent().child('cancels').child($k).child('at').val() === now)))",
+        ".validate": "newData.val() === true"
+      }
+    },
+    "secrets": {
+      "$k": {
+        ".write": "auth != null && auth.token.email === 'ADMIN_EMAIL' || ($k.matches(/^202611(1[6-9]|20)_[0-4]$/) && ((!data.exists() && newData.parent().parent().child('slots').child($k).val() === true) || (data.exists() && !newData.exists() && newData.parent().parent().child('cancels').child($k).child('at').val() === now)))",
+        ".validate": "newData.isString() && newData.val().length === 64"
+      }
+    },
+    "cancels": {
+      "$k": {
+        ".write": "auth != null && auth.token.email === 'ADMIN_EMAIL' || ($k.matches(/^202611(1[6-9]|20)_[0-4]$/) && !data.exists())",
+        ".validate": "newData.hasChildren(['proof','at']) && newData.child('at').val() === now && newData.child('proof').val() === root.child('secrets').child($k).val()",
+        "proof": {
+          ".validate": "newData.isString()"
+        },
+        "at": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "bookings": {
+      ".read": "auth != null && auth.token.email === 'ADMIN_EMAIL'",
+      "$k": {
+        ".write": "auth != null && auth.token.email === 'ADMIN_EMAIL' || ($k.matches(/^202611(1[6-9]|20)_[0-4]$/) && ((!data.exists() && newData.parent().parent().child('slots').child($k).val() === true) || (data.exists() && !newData.exists() && newData.parent().parent().child('cancels').child($k).child('at').val() === now)))",
+        ".validate": "newData.hasChildren(['name','phone','day','time','at'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 30"
+        },
+        "phone": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+        },
+        "day": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 4"
+        },
+        "time": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 4"
+        },
+        "at": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "extras": {
+      ".read": "auth != null && auth.token.email === 'ADMIN_EMAIL'",
+      "$id": {
+        ".write": "auth != null && auth.token.email === 'ADMIN_EMAIL' || (!data.exists() && newData.exists())",
+        ".validate": "newData.hasChildren(['name','phone','day','wish','at'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 30"
+        },
+        "phone": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+        },
+        "wish": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
+        },
+        "day": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 4"
+        },
+        "at": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}
